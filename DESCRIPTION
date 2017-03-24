@@ -1,14 +1,14 @@
 Package: ftRtools
 Type: Package
-Title: What the Package Does (Title Case)
+Title: FT R Data Science Tools
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Oli Elliott
+Maintainer: Oli Elliott <oliver.elliott@ft.com>
+Description: Tools for querying redshift
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Imports: RJDBC
 Suggests: testthat,
     knitr,
     rmarkdown
