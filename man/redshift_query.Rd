@@ -21,5 +21,14 @@ A dataframe of the query output.
 }
 \description{
 \code{redshift_query} returns the output of a SQL query on one of the FT
-Redshift clusters.
+Redshift clusters. You must be connected to the FT internal network to use
+this function. If you are commiting code to  github, do not write your
+redshift user name and password into the file. Instead create a .Renviron
+file in your home directory and access the credentials via
+\code{Sys.getEnv()} (see examples).
+}
+\examples{
+\dontrun{
+redshift_query("my_query.sql","int",Sys.getEnv("redshift_username"),Sys.getEnv("redshift_password"))
+}
 }
