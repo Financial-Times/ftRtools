@@ -25,3 +25,5 @@ redshift_query("my_query.sql",
                Sys.getenv("username"),
                Sys.getenv("password"))
 ```
+
+For more information on the `.Renviron` file, see [here](https://csgillespie.github.io/efficientR/r-startup.html#renviron)
