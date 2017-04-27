@@ -31,4 +31,5 @@ file in your home directory and access the credentials via
 \dontrun{
 redshift_query("my_query.sql","int",Sys.getEnv("redshift_username"),Sys.getEnv("redshift_password"))
 }
+
 }
