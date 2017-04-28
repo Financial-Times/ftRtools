@@ -11,7 +11,7 @@ Installation
 To use the redshift query elements of this package you need [Java SE JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed. To install the package from github use `install_github` function from the `devtools` package.
 
 ``` r
-devtools::install_github("ftRtools")
+devtools::install_github("Financial-Times/ftRtools")
 ```
 
 Examples
