@@ -58,7 +58,19 @@ test_that("connect_url handles string escapes", {
   expect_equal(grepl("ssl.NonValidatingFactory",connect_url("int","un","te'st")), TRUE)
 })
 
+context("Connecting to Redshift")
 
+test_that("a JDBC connection object is created for int", {
+  expect_is(redshift_connection("int",
+                                Sys.getenv("redshift_username"),
+                                Sys.getenv("redshift_password")),
+            "JDBCConnection")
+})
 
-
+test_that("a JDBC connection object is created for analytics", {
+  expect_is(redshift_connection("analytics",
+                                Sys.getenv("redshift_username"),
+                                Sys.getenv("redshift_password")),
+            "JDBCConnection")
+})
 
