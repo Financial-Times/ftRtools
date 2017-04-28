@@ -24,3 +24,41 @@ test_that("select_cluster handles capitalisation",{
   expect_equal(select_cluster("INT"), select_cluster("int"))
   expect_equal(select_cluster("Analytics"), select_cluster("analytics"))
 })
+
+context("Creating the connection url")
+
+test_that("connect_url has length 1", {
+  expect_equal(length(connect_url("int","un","pw")), 1)
+})
+
+test_that("connect_url returns a string", {
+  expect_equal(is.character(connect_url("analytics", "un", "pw")), TRUE)
+})
+
+test_that("connect_url errors if username or password are missing", {
+  expect_error(connect_url("int"), "Redshift credentials missing")
+  expect_error(connect_url("int", "un"), "Redshift credentials missing")
+  expect_error(connect_url("int", password = "pw"), "Redshift credentials missing")
+  expect_error(connect_url("analytics", "un", NA), "Redshift credentials missing")
+  expect_error(connect_url("analytics", "un", character(0)), "Redshift credentials missing")
+})
+
+test_that("connect_url errors if username or password are the wrong length", {
+  expect_error(connect_url("analytics", c("un1","un2"), "pw"), "Invalid credentials")
+  expect_error(connect_url("int", "un", c("pw1","pw2")), "Invalid credentials")
+})
+
+test_that("connect_url errors if username or password are not strings", {
+  expect_error(connect_url("int", 1, 2), "Invalid credentials")
+  expect_error(connect_url("int", list(un = "un"), "pw"), "Invalid credentials")
+})
+
+test_that("connect_url handles string escapes", {
+  expect_equal(grepl("ssl.NonValidatingFactory",connect_url("int","un",'te"st')), TRUE)
+  expect_equal(grepl("ssl.NonValidatingFactory",connect_url("int","un","te'st")), TRUE)
+})
+
+
+
+
+
