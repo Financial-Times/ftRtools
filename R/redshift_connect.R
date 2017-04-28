@@ -10,6 +10,9 @@ select_cluster <- function(cluster_name = "int"){
 
 
 connect_url <- function(cluster_name, username, password){
+  if(!(length(username) == 1 & length(password) == 1)) stop("Invalid credentials")
+  if(is.na(username) | is.na(password)) stop("Redshift credentials missing")
+  if(!(is.character(username) & is.character(password))) stop("Invalid credentials")
   host <- ftRtools:::select_cluster(cluster_name)
   base::paste0("jdbc:redshift://",
          host,

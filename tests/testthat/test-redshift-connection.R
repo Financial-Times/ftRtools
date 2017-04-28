@@ -36,11 +36,11 @@ test_that("connect_url returns a string", {
 })
 
 test_that("connect_url errors if username or password are missing", {
-  expect_error(connect_url("int"), "Redshift credentials missing")
-  expect_error(connect_url("int", "un"), "Redshift credentials missing")
-  expect_error(connect_url("int", password = "pw"), "Redshift credentials missing")
+  expect_error(connect_url("int"), 'argument "username" is missing, with no default')
+  expect_error(connect_url("int", "un"), 'argument "password" is missing, with no default')
+  expect_error(connect_url("int", password = "pw"), 'argument "username" is missing, with no default')
   expect_error(connect_url("analytics", "un", NA), "Redshift credentials missing")
-  expect_error(connect_url("analytics", "un", character(0)), "Redshift credentials missing")
+  expect_error(connect_url("analytics", "un", character(0)), "Invalid credentials")
 })
 
 test_that("connect_url errors if username or password are the wrong length", {
