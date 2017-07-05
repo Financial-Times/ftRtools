@@ -27,3 +27,13 @@ redshift_query <- function(sql_file, cluster, username, password){
   results
 }
 
+#' send Statement
+#'
+#' Method for sending insert queries
+redshift_insert <- function(statement, cluster, username, password){
+  connection <- ftRtools:::redshift_connection(cluster, username, password)
+  DBI::dbSendQuery(conn = connection,
+                   statement = statement)
+  RJDBC::dbDisconnect(connection)
+}
+
