@@ -1,7 +1,7 @@
 Package: ftRtools
 Type: Package
 Title: FT R Data Science Tools
-Version: 0.1.0
+Version: 0.1.1
 Author: Oli Elliott
 Maintainer: Oli Elliott <oliver.elliott@ft.com>
 Description: Tools for querying redshift
