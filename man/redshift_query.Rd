@@ -4,7 +4,7 @@
 \alias{redshift_query}
 \title{Query an FT Redshift cluster.}
 \usage{
-redshift_query(sql_file, cluster, username, password)
+redshift_query(sql_file, cluster, username, password, from_file = TRUE)
 }
 \arguments{
 \item{sql_file}{File name (and path) of a .sql you would like to run.}
@@ -15,6 +15,9 @@ redshift_query(sql_file, cluster, username, password)
 \item{username}{Your Redshift username.}
 
 \item{password}{Your Redshift passowrd.}
+
+\item{from_file}{Is the sql_file field a file to be ready or a query as a
+string? To pass a query string set to FALSE.}
 }
 \value{
 A dataframe of the query output.
