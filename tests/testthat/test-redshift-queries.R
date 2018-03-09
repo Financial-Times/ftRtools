@@ -25,7 +25,7 @@ test_that("column names are preserved", {
                                  "int",
                                  Sys.getenv("redshift_username"),
                                  Sys.getenv("redshift_password"))
-  expect_equal(names(query_result), c("tables"))
+  expect_equal(names(query_result), c("tabs"))
 })
 
 test_that("query as string runs on int", {
