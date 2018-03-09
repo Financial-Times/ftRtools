@@ -67,10 +67,10 @@ test_that("a JDBC connection object is created for int", {
             "JDBCConnection")
 })
 
-test_that("a JDBC connection object is created for analytics", {
-  expect_is(redshift_connection("analytics",
-                                Sys.getenv("redshift_username"),
-                                Sys.getenv("redshift_password")),
-            "JDBCConnection")
-})
+# test_that("a JDBC connection object is created for analytics", {
+#   expect_is(redshift_connection("analytics",
+#                                 Sys.getenv("redshift_username"),
+#                                 Sys.getenv("redshift_password")),
+#             "JDBCConnection")
+# })
 

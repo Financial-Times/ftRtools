@@ -12,6 +12,8 @@
 #'   'int' for the INT cluster and 'analytics' for the Analytics cluster.
 #' @param username Your Redshift username.
 #' @param password Your Redshift passowrd.
+#' @param from_file Is the sql_file field a file to be ready or a query as a
+#'   string? To pass a query string set to FALSE.
 #' @return A dataframe of the query output.
 #' @examples
 #' \dontrun{
@@ -19,8 +21,12 @@
 #' }
 #'
 #' @export
-redshift_query <- function(sql_file, cluster, username, password){
-  query <- base::paste(readLines(sql_file, warn = FALSE), collapse = '\n')
+redshift_query <- function(sql_file, cluster, username, password, from_file = TRUE){
+  if(from_file){
+    query <- base::paste(readLines(sql_file, warn = FALSE), collapse = '\n')
+  } else {
+    query = sql_file
+  }
   connection <- ftRtools:::redshift_connection(cluster, username, password)
   results <- RJDBC::dbGetQuery(connection, query)
   RJDBC::dbDisconnect(connection)
