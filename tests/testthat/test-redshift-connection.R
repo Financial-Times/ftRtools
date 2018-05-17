@@ -4,13 +4,13 @@ context("Selecting a cluster")
 test_that("select_cluster returns a string",{
   expect_equal(is.character(select_cluster()), TRUE)
   expect_equal(is.character(select_cluster("int")), TRUE)
-  expect_equal(is.character(select_cluster("analytics")), TRUE)
+  expect_equal(is.character(select_cluster("prod")), TRUE)
 })
 
 test_that("select_cluster returns the correct address",{
   expect_equal(select_cluster(), "redshift-dev.dw.in.ft.com:5439/int")
   expect_equal(select_cluster("int"), "redshift-dev.dw.in.ft.com:5439/int")
-  expect_equal(select_cluster("analytics"), "analytics.csttwzlr0uam.eu-west-1.redshift.amazonaws.com:5439/analytics")
+  expect_equal(select_cluster("prod"), "ft-dw-prod.csttwzlr0uam.eu-west-1.redshift.amazonaws.com")
 })
 
 test_that("select_cluster errors on unexpected inputs",{
@@ -22,7 +22,7 @@ test_that("select_cluster errors on unexpected inputs",{
 
 test_that("select_cluster handles capitalisation",{
   expect_equal(select_cluster("INT"), select_cluster("int"))
-  expect_equal(select_cluster("Analytics"), select_cluster("analytics"))
+  expect_equal(select_cluster("Prod"), select_cluster("prod"))
 })
 
 context("Creating the connection url")
@@ -32,15 +32,15 @@ test_that("connect_url has length 1", {
 })
 
 test_that("connect_url returns a string", {
-  expect_equal(is.character(connect_url("analytics", "un", "pw")), TRUE)
+  expect_equal(is.character(connect_url("prod", "un", "pw")), TRUE)
 })
 
 test_that("connect_url errors if username or password are missing", {
   expect_error(connect_url("int"), 'argument "username" is missing, with no default')
   expect_error(connect_url("int", "un"), 'argument "password" is missing, with no default')
   expect_error(connect_url("int", password = "pw"), 'argument "username" is missing, with no default')
-  expect_error(connect_url("analytics", "un", NA), "Redshift credentials missing")
-  expect_error(connect_url("analytics", "un", character(0)), "Invalid credentials")
+  expect_error(connect_url("prod", "un", NA), "Redshift credentials missing")
+  expect_error(connect_url("prod", "un", character(0)), "Invalid credentials")
 })
 
 test_that("connect_url errors if username or password are the wrong length", {
