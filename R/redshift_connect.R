@@ -6,7 +6,7 @@ select_cluster <- function(cluster_name = "int"){
   base::switch(cluster_name,
          int = "redshift-dev.dw.in.ft.com:5439/int",
          int2 = "ft-dw-dev-2.cdujhbzm5hjg.eu-west-1.redshift.amazonaws.com:5439/int",
-         prod = "ft-dw-prod.csttwzlr0uam.eu-west-1.redshift.amazonaws.com")
+         prod = "ft-dw-prod.csttwzlr0uam.eu-west-1.redshift.amazonaws.com:5439/prod")
 }
 
 

@@ -10,7 +10,7 @@ test_that("select_cluster returns a string",{
 test_that("select_cluster returns the correct address",{
   expect_equal(select_cluster(), "redshift-dev.dw.in.ft.com:5439/int")
   expect_equal(select_cluster("int"), "redshift-dev.dw.in.ft.com:5439/int")
-  expect_equal(select_cluster("prod"), "ft-dw-prod.csttwzlr0uam.eu-west-1.redshift.amazonaws.com")
+  expect_equal(select_cluster("prod"), "ft-dw-prod.csttwzlr0uam.eu-west-1.redshift.amazonaws.com:5439/prod")
 })
 
 test_that("select_cluster errors on unexpected inputs",{
