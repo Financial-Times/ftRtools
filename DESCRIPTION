@@ -1,7 +1,7 @@
 Package: ftRtools
 Type: Package
 Title: FT R Data Science Tools
-Version: 0.1.1
+Version: 0.1.2
 Author: Oli Elliott
 Maintainer: Oli Elliott <oliver.elliott@ft.com>
 Description: Tools for querying redshift
@@ -13,4 +13,4 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
