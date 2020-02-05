@@ -1,3 +1,28 @@
+#' Connect to an FT Redshift cluster
+#'
+#' Creates a Redshift connection object.
+#'
+#' @param cluster_name The Redshift cluster you wish to connect to. Can be one
+#'   of "prod", "int" or "int2".
+#' @param username Your Redshift username
+#' @param password Your Redshift password
+#'
+#' @return A Redshift connection object.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' ft_redshift_connection <- redshift_connection(
+#'   cluster_name = "prod",
+#'   rstudioapi::askForPassword("Database user"),
+#'   rstudioapi::askForPassword("Database password")
+#'  )
+#' }
+redshift_connection <- function(cluster_name, username, password){
+  driver <- ftRtools:::redshift_driver()
+  url <- ftRtools:::connect_url(cluster_name, username, password)
+  RJDBC::dbConnect(driver, url)
+}
 
 select_cluster <- function(cluster_name = "int"){
   cluster_name <- tolower(cluster_name)
@@ -22,10 +47,4 @@ connect_url <- function(cluster_name, username, password){
          "&password=",
          password,
          "&ssl=true&sslfactory=com.amazon.redshift.ssl.NonValidatingFactory")
-}
-
-redshift_connection <- function(cluster_name, username, password){
-  driver <- ftRtools:::redshift_driver()
-  url <- ftRtools:::connect_url(cluster_name, username, password)
-  RJDBC::dbConnect(driver, url)
 }
