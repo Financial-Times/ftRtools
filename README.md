@@ -40,7 +40,7 @@ redshift_query("my_query.sql",
 ```
 
 For more information on the `.Renviron` file, see
-[here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+[here](https://csgillespie.github.io/efficientR/r-startup.html#renviron)
 
 ### RStudio API
 

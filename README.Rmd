@@ -63,6 +63,6 @@ every time you run this code.
 
 [Java]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
-[Renviron]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[Renviron]: https://csgillespie.github.io/efficientR/r-startup.html#renviron
 
 [alternatives]: https://db.rstudio.com/best-practices/managing-credentials/
